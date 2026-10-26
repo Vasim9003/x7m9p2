@@ -50,7 +50,6 @@ def get_wind_data(start_date: str = "2026-01-01", end_date: str = "2026-01-31"):
     merged_df = merged_df.sort_values('startTime')
     
     # Forward fill (ffill) to copy the hourly forecast to the next 30-min slot
-    # Backward fill (bfill) just in case the very first slot is missing a forecast
     merged_df['forecast_generation'] = merged_df['forecast_generation'].ffill().bfill()
     
     # 6. Calculate Error and Round values
@@ -58,7 +57,7 @@ def get_wind_data(start_date: str = "2026-01-01", end_date: str = "2026-01-31"):
     merged_df['actual_generation'] = merged_df['actual_generation'].round(2)
     merged_df['forecast_generation'] = merged_df['forecast_generation'].round(2)
     
-    # Null values ethavathu iruntha drop panrom (dropna munnadiye pottathum oru thappu)
+    # drops null values 
     merged_df = merged_df.dropna()
     
     mae = abs(merged_df['error_mw']).mean().round(2)

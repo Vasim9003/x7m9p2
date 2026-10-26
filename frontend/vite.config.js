@@ -4,10 +4,10 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   server: {
-    host: '0.0.0.0', // Docker-kulla external access allow panrathukku
+    host: '0.0.0.0', 
     port: 5173,
     watch: {
-      usePolling: true // Windows WSL-kulla file changes-a watch panrathukku
+      usePolling: true 
     }
   }
 })

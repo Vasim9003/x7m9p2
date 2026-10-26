@@ -11,7 +11,7 @@ function App() {
   const [selectedDate, setSelectedDate] = useState('2026-01-01');
 
   useEffect(() => {
-    axios.get('http://127.0.0.1:8000/api/wind-data')
+    axios.get('https://wind-power-api.onrender.com/api/wind-data')
       .then(response => {
         if (response.data.status === "success") {
           setDashboardData(response.data);
